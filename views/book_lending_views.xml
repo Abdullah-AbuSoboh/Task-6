@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<record id="view_tree_book_lending" model="ir.ui.view">
+    <field name="name">library.book.lending.list</field>
+    <field name="model">library.book.lending</field>
+    <field name="arch" type="xml">
+      <list string="Book Lendings">
+        <field name="book_id"/>
+        <field name="borrower_id" string="Member"/>
+        <field name="card_id" string="Card ID"/>
+        <field name="lend_date"/>
+        <field name="return_date"/>
+        <field name="state"/>
+      </list>
+    </field>
+  </record>
+  <record id="view_form_book_lending" model="ir.ui.view">
+    <field name="name">library.book.lending.form</field>
+    <field name="model">library.book.lending</field>
+    <field name="arch" type="xml">
+<form string="Book Lending">
+<header>
+        <button name="mark_as_returned"
+                string="Mark as Returned"
+                type="object"
+                class="btn-primary"/>
+</header>
+    <sheet>
+        <group>
+            <field name="book_id"/>
+            <field name="borrower_id" string="Member"/>
+            <field name="card_id" readonly="1"/>
+            <field name="lend_date"/>
+            <field name="return_date"/>
+            <field name="state" readonly="1"/>
+        </group>
+</sheet>
+</form>
+    </field>
+  </record>
+    <record id="view_search_book_lending" model="ir.ui.view">
+        <field name="name">library.book.lending.search</field>
+        <field name="model">library.book.lending</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="book_id"/>
+                <field name="borrower_id" string="Member"/>
+                <field name="state"/>
+                <filter string="Not Returned" name="filter_not_returned" domain="[('state', '!=', 'returned')]"/>
+            </search>
+        </field>
+    </record>
+<record id="action_library_book_lending" model="ir.actions.act_window">
+    <field name="name">Book Lendings</field>
+    <field name="res_model">library.book.lending</field>
+    <field name="view_mode">list,form</field>
+    <field name="search_view_id" ref="view_search_book_lending"/>
+  </record>
+<menuitem id="menu_library_root" name="library" sequence="10"/>
+<menuitem id="menu_library_book_lending" name="Book Lendings" parent="menu_library_root" action="action_library_book_lending"/>
+</odoo>

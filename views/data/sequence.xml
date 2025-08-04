@@ -1,0 +1,5 @@
+<record id="seq_library_card" model="ir.sequence">
+  <field name="name">Library Card Number</field>
+  <field name="code">library.card.seq</field>
+  <field name="padding">6</field>
+</record>

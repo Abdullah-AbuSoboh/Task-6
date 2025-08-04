@@ -1,0 +1,9 @@
+<odoo>
+  <record id="seq_membership_card" model="ir.sequence">
+    <field name="name">Membership Card Number</field>
+    <field name="code">library.membership.request.card</field>
+    <field name="padding">6</field>
+    <field name="implementation">no_gap</field>
+  </record>
+</odoo>
+

@@ -1,0 +1,27 @@
+from odoo import models, fields, api
+from datetime import timedelta
+
+class BookLending(models.Model):
+    _name = 'library.book.lending'
+    _description = 'Book Lending'
+
+    book_id = fields.Many2one('library.book', string='Book', required=True)
+    borrower = fields.Char(string='Borrower Name', required=True)
+    lend_date = fields.Date(string='Lend Date', required=True)
+    return_date = fields.Date(string='Return Date')
+    state = fields.Selection([
+        ('borrowed', 'Borrowed'),
+        ('returned', 'Returned'),
+        ('late', 'Late')
+    ], string='Status', default='borrowed')
+
+    @api.onchange('lend_date')
+    def _onchange_lend_date(self):
+        if self.lend_date:
+            self.return_date = self.lend_date + timedelta(days=7)
+
+def mark_as_returned(self):
+    for record in self:
+        if record.state != 'returned':
+            record.state = 'returned'
+

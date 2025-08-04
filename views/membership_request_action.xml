@@ -1,0 +1,29 @@
+<odoo>
+  <record id="action_library_books" model="ir.actions.act_window">
+    <field name="name">Books</field>
+    <field name="res_model">library.book</field>
+    <field name="view_mode">list,form</field>
+  </record>
+
+  <record id="action_library_members" model="ir.actions.act_window">
+    <field name="name">Members</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('membership_ids','!=',False)]</field>
+  </record>
+
+  <record id="action_membership_request_partner" model="ir.actions.act_window">
+    <field name="name">Membership Requests</field>
+    <field name="res_model">library.membership.request</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+  </record>
+
+  <record id="action_membership_invoices" model="ir.actions.act_window">
+    <field name="name">Membership Invoices</field>
+    <field name="res_model">account.move</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('is_membership_invoice','=',True)]</field>
+  </record>
+</odoo>

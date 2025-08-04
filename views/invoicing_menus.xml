@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <!-- Action: عرض الكتب داخل Invoicing -->
+  <record id="action_invoicing_library_books" model="ir.actions.act_window">
+    <field name="name">Books</field>
+    <field name="res_model">library.book</field>
+    <field name="view_mode">list,form</field>
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        Click to add a new book.
+      </p>
+    </field>
+  </record>
+
+  <!-- Action: عرض الأعضاء داخل Invoicing -->
+  <record id="action_invoicing_library_members" model="ir.actions.act_window">
+    <field name="name">Members</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('membership_ids','!=',False)]</field>
+  </record>
+
+  <!-- Action: عرض فواتير العضوية داخل Invoicing -->
+  <record id="action_invoicing_library_invoices" model="ir.actions.act_window">
+    <field name="name">Membership Invoices</field>
+    <field name="res_model">account.move</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('move_type','=','out_invoice'), ('is_membership_invoice','=',True)]</field>
+    <field name="context">{'default_move_type':'out_invoice'}</field>
+  </record>
+
+  <!-- القائمة الجذرية تحت Invoicing → Invoices (Sales) -->
+  <menuitem
+    id="menu_invoicing_library_root"
+    name="Library"
+    parent="account.menu_finance"
+    sequence="30"
+  />
+
+  <!-- Children menus -->
+  <menuitem
+    id="menu_invoicing_library_books"
+    name="Books"
+    parent="menu_invoicing_library_root"
+    action="action_invoicing_library_books"
+  />
+  <menuitem
+    id="menu_invoicing_library_members"
+    name="Members"
+    parent="menu_invoicing_library_root"
+    action="action_invoicing_library_members"
+  />
+  <menuitem
+    id="menu_invoicing_library_invoices"
+    name="Invoices"
+    parent="menu_invoicing_library_root"
+    action="action_invoicing_library_invoices"
+  />
+
+</odoo>
+

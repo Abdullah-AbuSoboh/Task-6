@@ -1,0 +1,16 @@
+<odoo>
+  <template id="report_membership_single">
+    <t t-name="library_management.report_membership_single">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+          <div class="page">
+            <h2>Membership Report</h2>
+            <p>Member: <t t-esc="o.member_id.name"/></p>
+            <p>Card ID: <t t-esc="o.card_id"/></p>
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>
+

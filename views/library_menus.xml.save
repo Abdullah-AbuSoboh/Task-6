@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_library_root" name="Library"/>
+
+    <menuitem id="menu_library_books" name="Books" parent="menu_library_root"
+              action="action_library_books"/>
+
+    <menuitem id="menu_library_authors" name="Authors" parent="menu_library_root"
+              action="action_library_authors"/>
+
+    <menuitem id="menu_library_borrowing" name="Borrowing Records" parent="menu_library_root"
+              action="action_library_borrowings"/>
+</odoo>
+

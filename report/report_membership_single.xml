@@ -1,0 +1,14 @@
+<odoo>
+  <template id="report_membership_single">
+    <t t-call="web.basic_layout">
+      <div class="page">
+        <h2>Membership Report</h2>
+        <p>Member: <t t-esc="doc.member_id.name"/></p>
+        <p>Card ID: <t t-esc="doc.card_id"/></p>
+        <p>Start Date: <t t-esc="doc.registration_date"/></p>
+        <p>End Date: <t t-esc="doc.end_date"/></p>
+      </div>
+    </t>
+  </template>
+</odoo>
+

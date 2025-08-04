@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="membership_product_id" model="product.product">
+    <field name="name">Library Membership</field>
+    <field name="type">service</field>
+    <field name="categ_id" ref="product.product_category_all"/>
+    <field name="list_price">20.0</field>
+    <field name="sale_ok">True</field>
+  </record>
+</odoo>
+
