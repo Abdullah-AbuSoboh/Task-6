@@ -1,16 +1,40 @@
 <odoo>
-  <template id="report_membership_single">
-    <t t-name="library_management.report_membership_single">
-      <t t-call="web.html_container">
-        <t t-foreach="docs" t-as="o">
-          <div class="page">
-            <h2>Membership Report</h2>
-            <p>Member: <t t-esc="o.member_id.name"/></p>
-            <p>Card ID: <t t-esc="o.card_id"/></p>
-          </div>
+    <!-- التقرير الفردي -->
+    <template id="report_membership_single" name="Membership Report">
+        <t t-name="library_management.report_membership_single">
+            <t t-call="web.external_layout">
+                <main class="o_report_layout_standard">
+                    <div class="page">
+                        <h2>Membership Report</h2>
+                        <p>Member: <t t-esc="doc.member_id.name"/></p>
+                        <p>Card ID: <t t-esc="doc.card_id"/></p>
+                        <p>Registration Date: <t t-esc="doc.registration_date"/></p>
+                        <p>End Date: <t t-esc="doc.end_date"/></p>
+                        <p>Status: <t t-esc="doc.state"/></p>
+                    </div>
+                </main>
+            </t>
         </t>
-      </t>
-    </t>
-  </template>
+    </template>
+
+    <!-- التقرير الجماعي -->
+    <template id="report_membership_multiple" name="Membership Reports (Multiple)">
+        <t t-name="library_management.report_membership_multiple">
+            <t t-call="web.external_layout">
+                <main class="o_report_layout_standard">
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="page">
+                            <h2>Membership Report</h2>
+                            <p>Member: <t t-esc="doc.member_id.name"/></p>
+                            <p>Card ID: <t t-esc="doc.card_id"/></p>
+                            <p>Registration Date: <t t-esc="doc.registration_date"/></p>
+                            <p>End Date: <t t-esc="doc.end_date"/></p>
+                            <p>Status: <t t-esc="doc.state"/></p>
+                        </div>
+                    </t>
+                </main>
+            </t>
+        </t>
+    </template>
 </odoo>
 

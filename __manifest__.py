@@ -14,6 +14,7 @@
     'views/membership_request_action.xml',
     'report/membership_report.xml',
     'report/report_membership_single.xml',
+    'report/membership_report_template.xml',
 'views/membership_request_view.xml',
     'views/res_partner_view.xml',
 'data/sequence.xml',
