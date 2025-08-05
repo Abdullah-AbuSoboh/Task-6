@@ -1,9 +1,16 @@
 <odoo>
+  <!-- Tree View مع زر التقرير الجماعي -->
   <record id="view_membership_request_tree" model="ir.ui.view">
     <field name="name">library.membership.request.list</field>
     <field name="model">library.membership.request</field>
     <field name="arch" type="xml">
-      <list string="Membership Requests">
+      <list string="Membership Requests" create="true" edit="true">
+        <header>
+          <button name="library_management.action_report_membership_multiple"
+                  string="Print Membership Reports"
+                  type="action"
+                  class="btn-primary"/>
+        </header>
         <field name="member_id"/>
         <field name="registration_date"/>
         <field name="end_date"/>
@@ -11,6 +18,8 @@
       </list>
     </field>
   </record>
+
+  <!-- Form View -->
   <record id="view_membership_request_form" model="ir.ui.view">
     <field name="name">library.membership.request.form</field>
     <field name="model">library.membership.request</field>
@@ -19,22 +28,22 @@
         <header>
           <!-- Confirm button (only in draft) -->
           <button name="action_confirm" type="object" string="Confirm"
-            class="btn-primary"
-            modifiers="{'invisible': [('state', '!=', 'draft')]}"/>
+                  class="btn-primary"
+                  modifiers="{'invisible': [('state', '!=', 'draft')]}"/>
           <!-- Mark as Paid button (only in confirmed) -->
           <button name="action_mark_paid" type="object" string="Mark as Paid"
-            class="btn-success"
-            modifiers="{'invisible': [('state', '!=', 'confirmed')]}"/>
+                  class="btn-success"
+                  modifiers="{'invisible': [('state', '!=', 'confirmed')]}"/>
           <!-- Activate button (only in paid) -->
           <button name="action_activate" type="object" string="Activate"
-            class="btn-secondary"
-            modifiers="{'invisible': [('state', '!=', 'paid')]}"/>
+                  class="btn-secondary"
+                  modifiers="{'invisible': [('state', '!=', 'paid')]}"/>
+          <!-- زر التقرير الفردي -->
           <button name="library_management.action_report_membership_single"
-            
-            string="Print Membership Report"
-            type="action"
-            class="btn-primary"
-            context="{'lang': 'ar_001'}"/>
+                  string="Print Membership Report"
+                  type="action"
+                  class="btn-primary"
+                  context="{'lang': 'ar_001'}"/>
           <!-- Statusbar -->
           <field name="state" widget="statusbar"/>
         </header>
@@ -64,3 +73,4 @@
     </field>
   </record>
 </odoo>
+
